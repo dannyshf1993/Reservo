@@ -1,0 +1,80 @@
+<!--
+  Generated template for the ReservationrecordPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Reservation details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <!-- <h2>Success!</h2>
+      <p>Your reservation is confirmed!</p> -->
+      ------------------------------------------
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let comment of comments" (click)="removeComment(comment)">
+        
+          <p>{{comment.restname}}</p>
+                          
+          <p>time & discount: {{comment.hourtitle }}, {{ comment.title | date: "dd/MM"}} & 10% </p>
+          <p>number of guests: {{ comment.tit}} </p>
+          <p>special requests: {{ comment.request }}</p>
+          <p>name: {{ comment.name }}</p>
+          <p>phone: {{ comment.phone }}</p>
+          <p>email: {{ comment.email }} </p>
+          <!-- <button ion-button block color="danger" (click)="onRemovefirebaseComment()">cancel reservation</button>
+          <button ion-button block color="danger" (click)="onRemoveComment()">remove localstorage reservation</button> -->
+        </ion-item>
+      </ion-list>
+      <button ion-button block color="primary" (click)="onReturnPage()">Keep browsing</button>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <!-- <ion-list>
+
+    <ion-item *ngFor="let song of customerinformation | async; let i = index;" (click)="showOptions(song.$key, song.title, song.date)">
+      {{ i+1 }}. reserved guest name:
+      <h1> {{song.title}}</h1>
+      contact: phone:
+      <h1> {{song.phone}}</h1>
+      email:
+      <h1>{{song.email}}</h1>
+
+    </ion-item>
+
+
+  </ion-list> -->
+
+
+  <!-- <ion-list>
+    <ion-item *ngFor="let song of restaurantsone | async; let i = index;">
+      <p>{{i+1}}. Reserved date: {{song.Reserved_Date}}</p>
+
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+
+    <ion-item *ngFor="let song of reservedguestsnumber | async; let i = index;">
+
+      <p>{{i+1}}. Guests_number: {{song.Guests_number}}</p>
+
+    </ion-item>
+  </ion-list> -->
+
+
+</ion-content>

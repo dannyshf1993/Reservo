@@ -5,16 +5,14 @@
 
     <ion-header>
       <ion-toolbar>
-        <ion-title>Menu</ion-title>
+        <ion-title padding>Make every dining experience as good as it can be!</ion-title>
       </ion-toolbar>
     </ion-header>
 
-    <ion-content class="outer-content">
+    <ion-content color="light" class="outer-content">
 
       <ion-list>
-        <ion-list-header>
-          Navigate
-        </ion-list-header>
+
         <button ion-item menuClose *ngFor="let p of appPages" (click)="openPage(p)">
           <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
           {{p.title}}
@@ -22,16 +20,14 @@
       </ion-list>
 
       <ion-list>
-        <ion-list-header>
-          Account
-        </ion-list-header>
+
         <button ion-item menuClose *ngFor="let p of loggedOutPages" (click)="openPage(p)">
           <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
           {{p.title}}
         </button>
       </ion-list>
 
-      <ion-list>
+      <!-- <ion-list>
         <ion-list-header>
           Tutorial
         </ion-list-header>
@@ -39,7 +35,7 @@
           <ion-icon item-start name="hammer"></ion-icon>
           Show Tutorial
         </button>
-      </ion-list>
+      </ion-list> -->
     </ion-content>
 
   </ion-menu>
@@ -77,13 +73,22 @@
 
       <ion-list>
         <ion-list-header>
+          Reservo </ion-list-header>
+        <button ion-item menuClose>
+          <ion-icon item-start ios="ios-information-circle" md="md-information-circle"></ion-icon>
+          About us
+        </button>
+      </ion-list>
+
+      <!-- <ion-list>
+        <ion-list-header>
           Tutorial
         </ion-list-header>
         <button ion-item menuClose (click)="openTutorial()">
           <ion-icon item-start name="hammer"></ion-icon>
           Show Tutorial
         </button>
-      </ion-list>
+      </ion-list> -->
 
     </ion-content>
 

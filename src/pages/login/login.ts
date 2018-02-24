@@ -34,3 +34,80 @@ export class LoginPage {
     this.navCtrl.push(SignupPage);
   }
 }
+
+
+// import { Component } from '@angular/core';
+// import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+// import { usercreds } from '../../models/interfaces/usercreds';
+
+// import { AuthProvider } from '../../providers/auth/auth';
+// import { ToastController } from 'ionic-angular';
+
+// /**
+//  * Generated class for the LoginPage page.
+//  *
+//  * See http://ionicframework.com/docs/components/#navigation for more info
+//  * on Ionic pages and navigation.
+//  */
+// @IonicPage()
+// @Component({
+//   selector: 'page-login',
+//   templateUrl: 'login.html',
+// })
+// export class LoginPage {
+//   credentials = {} as usercreds;
+//   submitted = false;
+
+//   constructor(
+//     public navCtrl: NavController, 
+//     public navParams: NavParams, 
+//     public authservice: AuthProvider,
+//   private toastCtrl: ToastController
+//   ) {
+//   }
+
+//   ionViewDidLoad() {
+//     console.log('ionViewDidLoad LoginPage');
+//   }
+
+//   signin() {
+//     this.submitted = true;
+
+//     this.authservice.login(this.credentials).then((res: any) => {
+//       if (!res.code)
+//         this.navCtrl.setRoot('TabsPage'),
+//         this.presentToast();
+//       else
+//         alert(res);
+        
+//     })
+//   }
+
+//   signup() {
+//     this.navCtrl.push('SignupPage');
+//   }
+
+//   passwordreset() {
+//     this.navCtrl.push('PasswordresetPage');
+//   }
+
+//   presentToast() {
+//     let toast = this.toastCtrl.create({
+//       message: 'Welcome back!' ,
+//       duration: 3000,
+//       position: 'middle',
+//       cssClass: 'alertDanger'
+//     });
+  
+//     toast.onDidDismiss(() => {
+//       console.log('Dismissed toast');
+//     });
+  
+//     toast.present();
+//   }
+// }
+
+
+
+

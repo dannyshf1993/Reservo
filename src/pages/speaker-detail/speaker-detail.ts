@@ -11,9 +11,21 @@ import { ConferenceData } from '../../providers/conference-data';
   templateUrl: 'speaker-detail.html'
 })
 export class SpeakerDetailPage {
-  speaker: any;
 
-  constructor(public dataProvider: ConferenceData, public navCtrl: NavController, public navParams: NavParams) {
+  speaker: any;
+  speakers: any[] = [];
+  
+  constructor(
+    public dataProvider: ConferenceData, 
+    public navCtrl: NavController, 
+    public confData: ConferenceData,
+    public navParams: NavParams) {
+  }
+
+  ionViewDidLoad() {
+    this.confData.getSpeakers().subscribe((speakers: any[]) => {
+      this.speakers = speakers;
+    });
   }
 
   ionViewWillEnter() {

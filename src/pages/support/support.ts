@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { AlertController, NavController, ToastController } from 'ionic-angular';
+import { AlertController, NavController, ToastController, NavParams } from 'ionic-angular';
+import { ConferenceData } from '../../providers/conference-data';
 
 
 @Component({
@@ -9,25 +10,41 @@ import { AlertController, NavController, ToastController } from 'ionic-angular';
   templateUrl: 'support.html'
 })
 export class SupportPage {
-
+  session: any;
   submitted: boolean = false;
   supportMessage: string;
 
   constructor(
     public navCtrl: NavController,
     public alertCtrl: AlertController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public dataProvider: ConferenceData,
+    public navParams: NavParams,
   ) {
 
   }
 
   ionViewDidEnter() {
-    let toast = this.toastCtrl.create({
-      message: 'This does not actually send a support request.',
-      duration: 3000
+    this.dataProvider.load().subscribe((data: any) => {
+      if (
+        data &&
+        data.schedule &&
+        data.schedule[0] &&
+        data.schedule[0].groups
+      ) {
+        for (const group of data.schedule[0].groups) {
+          if (group && group.sessions) {
+            for (const session of group.sessions) {
+              if (session && session.id === this.navParams.data.sessionId) {
+                this.session = session;
+              }
+            }
+          }
+        }
+      }
     });
-    toast.present();
   }
+
 
   submit(form: NgForm) {
     this.submitted = true;

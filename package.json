@@ -1,77 +1,101 @@
 {
-    "name": "ionic-conference-app",
-    "version": "0.0.0",
-    "description": "Ionic Conference App",
-    "license": "Apache-2.0",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/ionic-team/ionic-conference-app.git"
-    },
-    "scripts": {
-        "build": "ionic-app-scripts build",
-        "clean": "ionic-app-scripts clean",
-        "lint": "ionic-app-scripts lint",
-        "ionic:build": "npm run build",
-        "ionic:serve": "npm run serve",
-        "ionic:lint": "npm run lint"
-    },
-    "dependencies": {
-        "@angular/common": "4.4.3",
-        "@angular/compiler": "4.4.3",
-        "@angular/compiler-cli": "4.4.3",
-        "@angular/core": "4.4.3",
-        "@angular/forms": "4.4.3",
-        "@angular/http": "4.4.3",
-        "@angular/platform-browser": "4.4.3",
-        "@angular/platform-browser-dynamic": "4.4.3",
-        "@ionic-native/core": "3.13.1",
-        "@ionic-native/in-app-browser": "3.13.1",
-        "@ionic-native/splash-screen": "3.13.1",
-        "@ionic-native/status-bar": "3.13.1",
-        "@ionic/storage": "2.0.1",
-        "cordova-android": "6.2.3",
-        "cordova-ios": "^4.5.1",
-        "cordova-plugin-crosswalk-webview": "^2.2.0",
-        "cordova-plugin-device": "1.1.4",
-        "cordova-plugin-inappbrowser": "~1.4.0",
-        "cordova-plugin-splashscreen": "~4.0.1",
-        "cordova-plugin-statusbar": "2.2.1",
-        "cordova-plugin-whitelist": "1.3.1",
-        "cordova-plugin-wkwebview-engine": "https://github.com/ionic-team/cordova-plugin-wkwebview-engine.git",
-        "ionic-angular": "3.6.1-201709260434",
-        "ionic-plugin-keyboard": "~2.2.1",
-        "ionicons": "3.0.0",
-        "rxjs": "5.4.3",
-        "sw-toolbox": "3.6.0",
-        "zone.js": "0.8.17"
-    },
-    "devDependencies": {
-        "@ionic/app-scripts": "2.1.4-201709271643",
-        "typescript": "~2.3.2"
-    },
-    "config": {
-        "ionic_aot_write_to_disk": true
-    },
-    "cordova": {
-        "platforms": [
-            "android",
-            "ios"
-        ],
-        "plugins": {
-            "cordova-plugin-crosswalk-webview": {
-                "XWALK_VERSION": "22+",
-                "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
-                "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
-                "XWALK_MODE": "embedded",
-                "XWALK_MULTIPLEAPK": "true"
-            },
-            "cordova-plugin-device": {},
-            "cordova-plugin-inappbrowser": {},
-            "cordova-plugin-splashscreen": {},
-            "cordova-plugin-statusbar": {},
-            "cordova-plugin-whitelist": {},
-            "cordova-plugin-wkwebview-engine": {},
-            "ionic-plugin-keyboard": {}
-        }
+  "name": "ionic-conference-app",
+  "version": "0.0.0",
+  "description": "Ionic Conference App",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ionic-team/ionic-conference-app.git"
+  },
+  "scripts": {
+    "build": "ionic-app-scripts build",
+    "clean": "ionic-app-scripts clean",
+    "lint": "ionic-app-scripts lint",
+    "ionic:build": "npm run build",
+    "ionic:serve": "npm run serve",
+    "ionic:lint": "npm run lint"
+  },
+  "dependencies": {
+    "@angular/common": "4.4.3",
+    "@angular/compiler": "4.4.3",
+    "@angular/compiler-cli": "4.4.3",
+    "@angular/core": "4.4.3",
+    "@angular/forms": "4.4.3",
+    "@angular/http": "4.4.3",
+    "@angular/platform-browser": "4.4.3",
+    "@angular/platform-browser-dynamic": "4.4.3",
+    "@ionic-native/call-number": "^4.5.2",
+    "@ionic-native/core": "3.13.1",
+    "@ionic-native/geolocation": "^4.5.2",
+    "@ionic-native/google-maps": "^4.4.2",
+    "@ionic-native/in-app-browser": "3.13.1",
+    "@ionic-native/sms": "^4.4.2",
+    "@ionic-native/splash-screen": "3.13.1",
+    "@ionic-native/status-bar": "3.13.1",
+    "@ionic/storage": "^2.1.3",
+    "angularfire2": "^5.0.0-rc.4",
+    "call-number": "^1.0.1",
+    "cordova-android": "^6.2.3",
+    "cordova-ios": "^4.5.1",
+    "cordova-plugin-compat": "^1.2.0",
+    "cordova-plugin-crosswalk-webview": "^2.3.0",
+    "cordova-plugin-device": "^1.1.4",
+    "cordova-plugin-geolocation": "^2.4.3",
+    "cordova-plugin-googlemaps": "^2.1.1",
+    "cordova-plugin-inappbrowser": "^1.4.0",
+    "cordova-plugin-nativestorage": "^2.2.2",
+    "cordova-plugin-splashscreen": "^4.0.3",
+    "cordova-plugin-statusbar": "^2.2.1",
+    "cordova-plugin-whitelist": "^1.3.1",
+    "cordova-plugin-wkwebview-engine": "git+https://github.com/ionic-team/cordova-plugin-wkwebview-engine.git",
+    "cordova-sms-plugin": "^0.1.11",
+    "cordova-sqlite-storage": "^2.1.4",
+    "firebase": "^4.6.2",
+    "ionic-angular": "3.6.1-201709260434",
+    "ionic-plugin-keyboard": "^2.2.1",
+    "ionicons": "3.0.0",
+    "mx.ferreyra.callnumber": "~0.0.2",
+    "rxjs": "5.4.3",
+    "sw-toolbox": "3.6.0",
+    "zone.js": "0.8.17"
+  },
+  "devDependencies": {
+    "@ionic/app-scripts": "^3.1.0",
+    "typescript": "~2.3.2"
+  },
+  "config": {
+    "ionic_aot_write_to_disk": true
+  },
+  "cordova": {
+    "platforms": [
+      "android",
+      "ios"
+    ],
+    "plugins": {
+      "cordova-plugin-crosswalk-webview": {
+        "XWALK_VERSION": "22+",
+        "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
+        "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
+        "XWALK_MODE": "embedded",
+        "XWALK_MULTIPLEAPK": "true"
+      },
+      "cordova-plugin-device": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-wkwebview-engine": {},
+      "ionic-plugin-keyboard": {},
+      "cordova-sms-plugin": {},
+      "cordova-plugin-googlemaps": {
+        "API_KEY_FOR_ANDROID": "AIzaSyAgLFCOMfC7WyZKpv8ry8ujf4guBrnrwAE"
+      },
+      "mx.ferreyra.callnumber": {},
+      "cordova-plugin-geolocation": {
+        "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
+      },
+      "cordova-sqlite-storage": {},
+      "cordova-plugin-nativestorage": {}
     }
+  }
 }

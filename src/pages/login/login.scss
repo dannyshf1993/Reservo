@@ -1,18 +1,124 @@
+// page-login {
+
+//   .background {
+//     background-image: url('<yoururlhere>');
+//   }
+//   .scroll-content {
+//     align-content: center;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     text-align: center;
+//   }
+//   ion-card.card {
+//     box-shadow: none;
+//     background: rgba(0, 0, 0, 0.5);
+//     border-radius: 5px;
+//   }
+//   a,
+//   p,
+//   ion-card-header.card-header {
+//     color: grey!important;
+//   }
+// //   .list>.item-block:first-child {
+// //     border: medium none;
+// //   }
+//   .item {
+//     margin-bottom: 10px;
+//     background: rgba(255, 255, 255, 0.5);
+//     border: medium none;
+//     .text-input,
+//     {
+//       color: #444;
+//     }
+//     input::-moz-placeholder {
+//       color: grey!important;
+//     }
+//     input:-moz-placeholder {
+//       color: grey!important;
+//     }
+//     *:-moz-placeholder {
+//       color: grey!important;
+//     }
+//     *:-ms-input-placeholder {
+//       color: grey!important;
+//     }
+//     *::-webkit-input-placeholder {
+//       color: grey!important;
+//     }
+//   }
+//   .icon {
+//     padding-right: 10px;
+//   }
+//   .bottom {
+//     bottom: 0;
+//   }
+//   .alertDanger {
+//     background-color: white;
+//     color: red;
+//     button {
+//       color: red;
+//     }
+//   }
+//   .input-cover {
+//     position: static;
+//   }
+// }
+
 // Styles for all of the user pages:
 // Login, Signup, Support
-
 page-user {
-  .logo {
-    padding: 20px 0;
-    min-height: 200px;
-    text-align: center;
+    a,
+      p,
+      ion-card-header.card-header {
+        color: grey!important;
+      }
+    //   .list>.item-block:first-child {
+    //     border: medium none;
+    //   }
+      .item {
+        margin-bottom: 10px;
+        background: rgba(255, 255, 255, 0.5);
+        border: medium none;
+        .text-input,
+        {
+          color: #444;
+        }
+        input::-moz-placeholder {
+          color: grey!important;
+        }
+        input:-moz-placeholder {
+          color: grey!important;
+        }
+        *:-moz-placeholder {
+          color: grey!important;
+        }
+        *:-ms-input-placeholder {
+          color: grey!important;
+        }
+        *::-webkit-input-placeholder {
+          color: grey!important;
+        }
+      }
+      .icon {
+        padding-right: 10px;
+      }
+      .button-clear-md-dark {
+          white-space: normal;
+      }
 
-    img {
-      max-width: 150px;
-    }
-  }
-
+      .input-cover {
+        position: static;
+      }
   .list {
     margin-bottom: 0;
+    margin-top: 25%;
   }
+  .scroll-content {
+        align-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+      }
 }

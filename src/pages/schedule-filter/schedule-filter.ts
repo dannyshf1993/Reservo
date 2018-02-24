@@ -35,7 +35,7 @@ export class ScheduleFilterPage {
   resetFilters() {
     // reset all of the toggles to be checked
     this.tracks.forEach(track => {
-      track.isChecked = true;
+      track.isChecked = false;
     });
   }
 

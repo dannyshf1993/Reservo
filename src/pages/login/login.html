@@ -1,47 +1,84 @@
 <ion-header>
-	<ion-navbar>
-		<button ion-button menuToggle>
+  <ion-navbar>
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-		<ion-title>Login</ion-title>
-	</ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
 </ion-header>
 
-<ion-content>
-	<div class="logo">
-		<img src="assets/img/appicon.svg" alt="Ionic logo">
-	</div>
+<ion-content padding>
 
-	<form #loginForm="ngForm" novalidate>
-		<ion-list no-lines>
-			<ion-item>
-				<ion-label stacked color="primary">Username</ion-label>
-				<ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
-					required>
-				</ion-input>
-			</ion-item>
-			<p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
-				Username is required
-			</p>
+  <form #loginForm="ngForm" novalidate>
+    <ion-list no-lines padding>
+      <ion-item>
+        <ion-label floating color="dark">Username</ion-label>
+        <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+          required>
+        </ion-input>
+      </ion-item>
+      <p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
+        Username is required!
+      </p>
+      <div class="spacer" style="height: 5px;"></div>
 
-			<ion-item>
-				<ion-label stacked color="primary">Password</ion-label>
-				<ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
-				</ion-input>
-			</ion-item>
-			<p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
-				Password is required
-			</p>
-		</ion-list>
+      <ion-item>
+        <ion-label floating color="dark">Password</ion-label>
+        <ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
+        Password is required!
+      </p>
+    </ion-list>
 
-		<ion-row responsive-sm>
-			<ion-col>
-				<button ion-button (click)="onLogin(loginForm)" type="submit" block>Login</button>
-			</ion-col>
-			<ion-col>
-				<button ion-button (click)="onSignup()" color="light" block>Signup</button>
-			</ion-col>
-		</ion-row>
-	</form>
+    <div class="spacer" style="height: 5px;"></div>
+
+    <a (click)="passwordreset()">Forgot login details ?
+      <b> Get Help </b>
+    </a>
+    <div class="spacer" style="height: 10px;"></div>
+    <button ion-button block round outline color="dark" (click)="onLogin(loginForm)" type="submit">Log in</button>
+    <div class="spacer" style="height: 10px;"></div>
+    <p>OR</p>
+    <div class="spacer" style="height: 10px;"></div>
+    <button ion-button clear full color="dark" (click)="onSignup()">Don't have an account? Sign up</button>
+
+  </form>
 
 </ion-content>
+
+
+<!-- <ion-content class="background"> -->
+
+
+
+<!-- <ion-list no-lines padding>
+    <ion-buttons>
+      <button ion-item clear>
+        <ion-input type="email" placeholder="Email" [(ngModel)]="credentials.email"></ion-input>
+      </button>
+    </ion-buttons>
+    <div class="spacer" style="height: 5px;"></div>
+    <ion-buttons>
+      <button ion-item clear>
+        <ion-input type="password" placeholder="Password" [(ngModel)]="credentials.password"></ion-input>
+      </button>
+		</ion-buttons>
+
+    <div class="spacer" style="height: 10px;"></div>
+    <a (click)="passwordreset()">Forgot login details ?
+      <b> Get Help </b>
+    </a>
+    <div class="spacer" style="height: 10px;"></div>
+    <button ion-button block round outline color="dark" type="submit" (click)="signin()">Login</button>
+    <div class="spacer" style="height: 10px;"></div>
+    <p>OR</p>
+    <div class="spacer" style="height: 10px;"></div>
+    <button ion-button clear full color="dark" (click)="signup()">Don't have an account? Sign up</button>
+  </ion-list>
+
+
+
+
+</ion-content>  -->

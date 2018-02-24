@@ -4,6 +4,8 @@
   </ion-navbar>
 </ion-header>
 
+
+
 <ion-content padding class="speaker-detail">
   <div text-center *ngIf="speaker">
     <img [src]="speaker.profilePic" [alt]="speaker.name"><br>
@@ -20,4 +22,15 @@
   </div>
 
   <p>{{speaker?.about}}</p>
+
+
+  <ion-list [virtualScroll]="speakers">
+    <div *virtualItem="let speaker">
+
+      <button ion-item *ngFor="let session of speaker.sessions">
+        <h3>{{session.name}}</h3>
+      </button>
+    </div>
+  </ion-list>
+
 </ion-content>

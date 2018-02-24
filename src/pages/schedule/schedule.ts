@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher } from 'ionic-angular';
+import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher, Content } from 'ionic-angular';
 
+import {ElementRef,Renderer } from '@angular/core';
+import { NavParams } from 'ionic-angular';
 /*
   To learn how to use third party libs in an
   Ionic app check out our docs here: http://ionicframework.com/docs/v2/resources/third-party-libs/
@@ -17,7 +19,80 @@ import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 
 @Component({
   selector: 'page-schedule',
-  templateUrl: 'schedule.html'
+  templateUrl: 'schedule.html',
+  styles: [
+    `
+    /* Fix the spinner used in e2e */
+    .fixed-spinner svg {
+      animation: none;
+    }
+    `,
+    `
+    .custom-spinner-container {
+      position: relative;
+      display: inline-block;
+      box-sizing: border-box;
+    }
+    `,
+    `
+    .custom-spinner-box {
+      position: relative;
+      box-sizing: border-box;
+      border: 4px solid #000;
+      width: 60px;
+      height: 60px;
+      animation: spin 3s infinite linear;
+    }
+    `,
+    `
+    .custom-spinner-box:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-sizing: border-box;
+      border: 4px solid #000;
+      width: 40px;
+      height: 40px;
+      animation: pulse 1.5s infinite ease;
+    }
+    `,
+    `
+    .wp .custom-spinner-box,
+    .wp .custom-spinner-box:before {
+      border-color: #fff;
+    }
+    `
+    ,
+    `
+    @-webkit-keyframes pulse {
+      50% {
+        border-width: 20px;
+      }
+    }
+    `,
+    `
+    @keyframes pulse {
+      50% {
+        border-width: 20px;
+      }
+    }
+    `,
+    `
+    @-webkit-keyframes spin {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+    `,
+    `@keyframes spin {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }`]
 })
 export class SchedulePage {
   // the list is a child of the schedule page
@@ -25,6 +100,12 @@ export class SchedulePage {
   // with the variable #scheduleList, `read: List` tells it to return
   // the List and not a reference to the element
   @ViewChild('scheduleList', { read: List }) scheduleList: List;
+  @ViewChild("contentRef") contentHandle: Content;
+
+  public items = [];
+  private tabBarHeight;
+  private topOrBottom: string;
+  private contentBox;
 
   dayIndex = 0;
   queryText = '';
@@ -34,16 +115,30 @@ export class SchedulePage {
   groups: any = [];
   confDate: string;
 
+  start = 0;
+  threshold = 100;
+  slideHeaderPrevious = 0;
+  ionScroll: any;
+  showheader: boolean;
+  hideheader: boolean;
+  headercontent: any;
+
   constructor(
     public alertCtrl: AlertController,
     public app: App,
     public loadingCtrl: LoadingController,
     public modalCtrl: ModalController,
-    public navCtrl: NavController,
     public toastCtrl: ToastController,
     public confData: ConferenceData,
     public user: UserData,
-  ) {}
+    public navCtrl: NavController,
+    public renderer: Renderer,
+    public myElement: ElementRef,
+    public navParams: NavParams
+  ) {
+    this.showheader =false;
+    this.hideheader = true;
+   }
 
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
@@ -85,14 +180,14 @@ export class SchedulePage {
     if (this.user.hasFavorite(sessionData.name)) {
       // woops, they already favorited it! What shall we do!?
       // prompt them to remove it
-      this.removeFavorite(slidingItem, sessionData, 'Favorite already added');
+      this.removeFavorite(slidingItem, sessionData, 'This restaurant has already been added.');
     } else {
       // remember this session as a user favorite
       this.user.addFavorite(sessionData.name);
 
       // create an alert instance
       let alert = this.alertCtrl.create({
-        title: 'Favorite Added',
+        title: 'Favorite Saved!',
         buttons: [{
           text: 'OK',
           handler: () => {
@@ -110,7 +205,7 @@ export class SchedulePage {
   removeFavorite(slidingItem: ItemSliding, sessionData: any, title: string) {
     let alert = this.alertCtrl.create({
       title: title,
-      message: 'Would you like to remove this session from your favorites?',
+      message: 'Would you like to remove this restaurant from your favorites?',
       buttons: [
         {
           text: 'Cancel',
@@ -159,11 +254,63 @@ export class SchedulePage {
         refresher.complete();
 
         const toast = this.toastCtrl.create({
-          message: 'Sessions have been updated.',
+          // message: ' have been updated.',
           duration: 3000
         });
         toast.present();
       }, 1000);
     });
   }
+
+  ionViewDidEnter() {
+    this.topOrBottom=this.contentHandle._tabsPlacement;
+    this.contentBox=document.querySelector(".scroll-content")['style'];
+  
+    if (this.topOrBottom == "top") {
+      this.tabBarHeight = this.contentBox.marginTop;
+    } else if (this.topOrBottom == "bottom") {
+      this.tabBarHeight = this.contentBox.marginBottom;
+    }
+  }
+ 
+  scrollingFun(e) {
+    if (e.scrollTop > this.contentHandle.getContentDimensions().contentHeight) {
+      document.querySelector(".tabbar")['style'].display = 'none';
+      if (this.topOrBottom == "top") {
+        this.contentBox.marginTop = 0;
+      } else if (this.topOrBottom == "bottom") {
+        this.contentBox.marginBottom = 0;
+      }
+ 
+    } else {
+      document.querySelector(".tabbar")['style'].display = 'flex';
+      if (this.topOrBottom == "top") {
+        this.contentBox.marginTop = this.tabBarHeight;
+      } else if (this.topOrBottom == "bottom") {
+        this.contentBox.marginBottom = this.tabBarHeight;
+      }
+ 
+    }//if else
+  }//
+
+  ngOnInit() {
+    // Ionic scroll element
+    this.ionScroll = this.myElement.nativeElement.getElementsByClassName('scroll-content')[0];
+    // On scroll function
+    this.ionScroll.addEventListener("scroll", () => {
+    if(this.ionScroll.scrollTop - this.start > this.threshold) {
+    this.showheader =true;
+    this.hideheader = false;
+    } else {
+    this.showheader =false;
+    this.hideheader = true;
+    }
+    if (this.slideHeaderPrevious >= this.ionScroll.scrollTop - this.start) {
+    this.showheader =false;
+    this.hideheader = true;
+    }
+    this.slideHeaderPrevious = this.ionScroll.scrollTop - this.start;
+    });
+    }
+
 }

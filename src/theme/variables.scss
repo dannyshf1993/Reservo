@@ -43,7 +43,9 @@ $colors: (
   twitter:    #1da1f4,
   google:     #dc4a38,
   vimeo:      #23b6ea,
-  facebook:   #3b5998
+  facebook:   #0650da,
+  grey: #6f6565,
+  darkblue: darkblue,
 );
 
 
@@ -58,10 +60,10 @@ $colors: (
 // Material Design only Sass variables can go here
 
 // Use the primary color as the background for the toolbar-md-background
-$toolbar-md-background:                   color($colors, primary);
+$toolbar-md-background:                   color($colors, dark);
 
 // Change the color of the segment button text
-$toolbar-md-active-color:                 #fff;
+$toolbar-md-active-color:                 grey;
 
 
 // App Windows Variables

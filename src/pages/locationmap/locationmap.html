@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title *ngIf="session">{{session.name}}</ion-title>
+    <!-- <ion-buttons end>
+        <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
+      </ion-buttons>  -->
+    <ion-buttons end>
+      <button icon-only ion-button (click)="onRemovePage()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+
+  <div #mapContainer id="map"></div>
+
+  <ion-card>
+    <div #directionsPanel>
+    </div>
+  </ion-card>
+</ion-content>

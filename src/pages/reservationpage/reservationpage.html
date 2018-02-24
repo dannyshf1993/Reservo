@@ -1,0 +1,107 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title *ngIf="session">{{session.name}}</ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  
+
+  <h3>Reservation details</h3>
+  <h4>Please remind that one reservation is allowed per restaurant at a time, or the newest reservation would be made available.</h4>  
+  <ion-list no-lines>
+    <form (ngSubmit)="onAddComment(f.value, session)" #f="ngForm">
+
+      <ion-item>
+        <ion-label>Hour</ion-label>
+        <ion-select name="hourtitle" ngModel required>
+          <ion-option value="11:30" selected>11 : 30</ion-option>
+          <ion-option value="12:00">12 : 00</ion-option>
+          <ion-option value="12:30">12 : 30</ion-option>
+          <ion-option value="13:00">13 : 00</ion-option>
+          <ion-option value="13:30">13 : 30</ion-option>
+          <ion-option value="14:00">14 : 00</ion-option>
+          <ion-option value="14:30">14 : 30</ion-option>
+          <ion-option value="15:00">15 : 00</ion-option>
+          <ion-option value="15:30">15 : 30</ion-option>
+          <ion-option value="16:00">16 : 00</ion-option>
+          <ion-option value="16:30">16 : 30</ion-option>
+          <ion-option value="17:00">17 : 00</ion-option>
+          <ion-option value="17:30">17 : 30</ion-option>
+          <ion-option value="18:00">18 : 00</ion-option>
+          <ion-option value="18:30">18 : 30</ion-option>
+          <ion-option value="19:00">19 : 00</ion-option>
+          <ion-option value="19:30">19 : 30</ion-option>
+          <ion-option value="20:00">20 : 00</ion-option>
+          <ion-option value="20:30">20 : 30</ion-option>
+          <ion-option value="21:00">21 : 00</ion-option>
+          <ion-option value="21:30">21 : 30</ion-option>
+          <ion-option value="22:00">22 : 00</ion-option>
+          <ion-option value="22:30">22 : 30</ion-option>
+        </ion-select>
+      </ion-item>
+
+
+        <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime name="title" ngModel required displayFormat="DDDD, MMM DD" pickerFormat="MMMM DD" [(ngModel)]="myDate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+    
+        <ion-label>Guests</ion-label>
+        <ion-select name="tit" ngModel required>
+          <ion-option value="1 person" selected>One person</ion-option>
+          <ion-option value="2 people">Two people</ion-option>
+          <ion-option value="3 people">Three people</ion-option>
+          <ion-option value="4 people">Four or more</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label>Seat Location</ion-label>
+        <ion-select name="table" ngModel required>
+          <ion-option value="Single table" selected>Single table</ion-option>
+          <ion-option value="Two to four people table">Two to four table</ion-option>
+          <ion-option value="Five or more people table">Five or more table</ion-option>
+        </ion-select>
+      </ion-item>
+ -->
+      <ion-item color="light">
+        <ion-input name="request" ngModel required placeholder="What is your special request?"></ion-input>
+      </ion-item>
+
+      <ion-item color="light">
+        <ion-input name="name" type="text" ngModel required placeholder="Name"></ion-input>
+      </ion-item>
+
+      <ion-item color="light">
+        <ion-input name="phone" type="number" ngModel required placeholder="Phone"></ion-input>
+      </ion-item>
+
+      <ion-item color="light">
+        <ion-input name="email" type="email" ngModel required placeholder="Email for sms confirmation"></ion-input>
+      </ion-item>
+
+      <ion-card text-wrap>
+        By clicking on "reserve", you agree to the general
+        <div (click)="pushtnc()">
+          <h4>term and conditions*</h4> of Reservo
+        </div> and accept the use of your data according to the
+        <div (click)="pushpnp()">
+          <h4> privacy policy</h4>
+        </div>
+        set out by Reservo.
+      </ion-card>
+
+      <ion-buttons>
+        <button ion-button block type="submit" [disabled]="!f.valid">Reserve</button>
+      </ion-buttons>
+    </form>
+
+  </ion-list>
+
+
+</ion-content>

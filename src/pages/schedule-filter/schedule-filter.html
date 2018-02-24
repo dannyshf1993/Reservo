@@ -4,10 +4,6 @@
       <button ion-button (click)="dismiss()">Cancel</button>
     </ion-buttons>
 
-    <ion-title>
-      Filter Sessions
-    </ion-title>
-
     <ion-buttons end>
       <button ion-button (click)="applyFilters()" strong>Done</button>
     </ion-buttons>
@@ -15,22 +11,27 @@
 </ion-header>
 
 <ion-content class="outer-content">
+    <button ion-item (click)="resetFilters()" detail-none class="reset-filters" color="dark">
+     <h2>Undo</h2> 
+    </button>
+
 
   <ion-list>
-    <ion-list-header>Tracks</ion-list-header>
+    <ion-item *ngFor="let track of tracks" [attr.track]="track.name | lowercase">
+      <ion-label>{{track.name}}</ion-label>
+      <ion-checkbox color="dark" [(ngModel)]="track.isChecked"></ion-checkbox>
+    </ion-item>
+  </ion-list>
 
+  <!-- <ion-list>
     <ion-item *ngFor="let track of tracks" [attr.track]="track.name | lowercase">
       <span item-start class="dot"></span>
       <ion-label>{{track.name}}</ion-label>
-      <ion-toggle [(ngModel)]="track.isChecked" color="secondary"></ion-toggle>
+
+      <ion-toggle ng-checked="true" [(ngModel)]="track.isChecked" color="primary"></ion-toggle>
     </ion-item>
 
-  </ion-list>
+  </ion-list> -->
 
-  <ion-list>
-    <button ion-item (click)="resetFilters()" detail-none class="reset-filters">
-      Reset All Filters
-    </button>
-  </ion-list>
 
 </ion-content>

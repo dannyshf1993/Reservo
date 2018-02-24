@@ -1,25 +1,98 @@
-$categories: (
- ionic: color($colors, primary),
- angular: #AC282B,
- communication: #8E8D93,
- tooling: #FE4C52,
- services: #FD8B2D,
- design: #FED035,
- workshop: #69BB7B,
- food: #3BC7C4,
- documentation: #B16BE3,
- navigation: #6600CC,
-);
-
+$categories: ( ionic: color($colors, primary), angular: #AC282B, communication: #8E8D93, tooling: #FE4C52, services: #FD8B2D, design: #FED035, workshop: #69BB7B, food: #3BC7C4, documentation: #B16BE3, navigation: #6600CC, );
 @function auxiliary-categories() {
   @return map-remove($categories);
 }
 
 page-schedule {
-  @each $track, $value in auxiliary-categories() {
-   ion-item-sliding[track=#{$track}] ion-label {
-     border-left: 2px solid $value;
-     padding-left: 10px;
-   }
+  @each $track,
+  $value in auxiliary-categories() {
+    ion-item-sliding[track=#{$track}] ion-label {
+      border-left: 2px solid $value;
+      padding-left: 10px;
+    }
+    ion-label {
+      color: blue;
+      font-size: 2.0rem;
+      font-weight: bold;
+    }
+    h3 {
+      color: black;
+    }
+    .logo {
+      height: 60px;
+      padding: 5px;
+      margin-left: 20px;
+    }
+    .item-md {
+      margin: 0px;
+      padding: 0px;
+      width: 100%;
+    }
+    .item-md.item-block .item-inner {
+      padding-right: 0px;
+    }
+    .label-md {
+      margin: 0px;
+      padding: 0px;
+    }
+    .frontpagebutton {
+      position: absolute;
+    }
+    .front-info {
+      position: absolute;
+      z-index: 5;
+      background-color: black;
+      opacity: 0.5;
+      width: 100%;
+      // height: 98%;
+      h3 {
+        color: white;
+        font-weight: lighter;
+        font-size: 2.2rem;
+        white-space: normal;
+        z-index: 6px;
+      }
+      p {
+        color: white;
+        font-weight: lighter;
+        font-size: 1.2rem;
+        z-index: 6px;
+      }
+    }
+    .image {
+      position: relative;
+      background-size: cover;
+      background: linear-gradient(to bottom, #000 0%, #fff 100%);
+      background-position: center;
+      height: 190px;
+      width: 100%;
+    
+    }
+    .scroll-content {
+      top: -125px !important;
+      padding-top: 125px !important;
+      bottom: -62px !important;
+    }
+    .hide-header {
+      transition: top 0.25s ease;
+      top: -125px;
+    }
+    .show-header {
+      transition: top 0.25s ease;
+      top: 0px;
+    }
+  }
+
+  .scroll-content {
+    height: 100%;
+  }
+  .divider {
+    // top: -125px;  
+    height: 35px;  
+
+  }
+
+  .toolbar-background-md {
+    background: grey;
   }
 }

@@ -33,9 +33,12 @@ export class ConferenceData {
 
     // loop through each day in the schedule
     this.data.schedule.forEach((day: any) => {
+
       // loop through each timeline group in the day
+      // loop through each category in the 'day'
       day.groups.forEach((group: any) => {
         // loop through each session in the timeline group
+        //loop through each restaurants in the category
         group.sessions.forEach((session: any) => {
           session.speakers = [];
           if (session.speakerNames) {
@@ -45,6 +48,8 @@ export class ConferenceData {
                 session.speakers.push(speaker);
                 speaker.sessions = speaker.sessions || [];
                 speaker.sessions.push(session);
+              
+                
               }
             });
           }
@@ -135,7 +140,14 @@ export class ConferenceData {
       return data.speakers.sort((a: any, b: any) => {
         let aName = a.name.split(' ').pop();
         let bName = b.name.split(' ').pop();
+        console.log(a);
+        console.log(b);
+        
+        
+        // console.log(aName + ' and ' + bName);
+        
         return aName.localeCompare(bName);
+        
       });
     });
   }
@@ -149,6 +161,7 @@ export class ConferenceData {
   getMap() {
     return this.load().map((data: any) => {
       return data.map;
+      
     });
   }
 
